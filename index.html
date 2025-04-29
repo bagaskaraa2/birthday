@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      flex-direction: column;
+      text-align: center;
+    }
+    .slide {
+      display: none;
+    }
+    .slide.active {
+      display: block;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #e29595;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 40px;
+      max-width: 80%;
+    }
+    img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="slide active">
+    <img src="slide1.png" alt="Slide 1" />
+    <button class="btn" onclick="start()">Click</button>
+  </div>
+
+  <div class="slide">
+    <div class="text">helloww... April 28th is your birthday right?</div>
+    <button class="btn" onclick="nextSlide()">Click</button>
+  </div>
+
+  <div class="slide">
+    <div class="text">happy level up day!!!...semoga wishlist kamu di tahun ini tercapai yaa, dilancarkan semuanyaa..</div>
+    <button class="btn" onclick="nextSlide()">Click</button>
+  </div>
+
+  <div class="slide">
+    <div class="text">bukan cuma soal nambah umur, tapi soal gimana kamu udah tumbuh sejauh ini jadi versi kamu yang lebih dewasa, lebih bijak, dan lebih tenang.</div>
+    <button class="btn" onclick="nextSlide()">Click</button>
+  </div>
+
+  <div class="slide">
+    <div class="text">That's a new chapter for you, be the happiest version of yourself, take care of your health, and love who you are. I'll be happy if you're doing well</div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const music = document.getElementById("bg-music");
+    let currentSlide = 0;
+
+    function start() {
+      music.play();
+      nextSlide();
+    }
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove("active");
+      currentSlide++;
+      if (currentSlide < slides.length) {
+        slides[currentSlide].classList.add("active");
+      }
+    }
+  </script>
+</body>
+</html>
