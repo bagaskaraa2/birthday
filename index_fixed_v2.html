@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffe6eb;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .slide.active {
+      display: flex;
+    }
+    .text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 40px;
+      max-width: 80%;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #e29595;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+    img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="music(1).mp3" type="audio/mpeg" />
+  </audio>
+  <div class="slide active">
+    <img src="slide1.png" alt="Slide 1"/>
+    <button class="btn" onclick="nextSlide()">Click</button>
+  </div>
+  <div class="slide">
+    <div class="text">helloww... April 28th is your birthday right?</div>
+    <button class="btn" onclick="nextSlide()">Click</button>
+  </div>
+  <div class="slide">
+    <div class="text">happy level up day!!!... semoga wishlist kamu di tahun ini tercapai yaa, dilancarkan semuanyaa..</div>
+    <button class="btn" onclick="nextSlide()">Click</button>
+  </div>
+  <div class="slide">
+    <div class="text">bukan cuma soal nambah umur, tapi soal gimana kamu udah tumbuh sejauh ini jadi versi kamu yang lebih dewasa, lebih bijak, dan lebih tenang.</div>
+    <button class="btn" onclick="nextSlide()">Click</button>
+  </div>
+  <div class="slide">
+    <div class="text">That's a new chapter for you, be the happiest version of yourself, take care of your health, and love who you are. I'll be happy if you're doing well</div>
+    <button class="btn" onclick="nextSlide()">End</button>
+  </div>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+  </script>
+</body>
+</html>
