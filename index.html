@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf0;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .button {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 28px;
+      font-size: 18px;
+      background-color: pink;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="music(1).mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="slide active" style="background-image: url('slide1.png');"></div>
+  <div class="slide" style="background-image: url('slide2.png');"></div>
+  <div class="slide" style="background-image: url('slide3.png');"></div>
+  <div class="slide" style="background-image: url('slide4.png');"></div>
+  <div class="slide" style="background-image: url('slide5.png');"></div>
+
+  <button id="nextBtn" class="button">Click to Continue</button>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const nextBtn = document.getElementById('nextBtn');
+    const audio = document.getElementById('bgMusic');
+    let current = 0;
+    let musicStarted = false;
+
+    nextBtn.addEventListener('click', () => {
+      if (!musicStarted) {
+        audio.play();
+        musicStarted = true;
+      }
+
+      slides[current].classList.remove('active');
+      current++;
+      if (current < slides.length) {
+        slides[current].classList.add('active');
+      } else {
+        nextBtn.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
